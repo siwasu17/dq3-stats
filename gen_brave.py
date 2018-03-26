@@ -59,7 +59,7 @@ class Brave:
         print("")
 
     def __str__(self):
-        return f"{self.name},{self.lv},{self.personality},{self.str},{self.agi},{self.vit},{self.int},{self.luk}"
+        return f"{self.name},{self.lv},{self.personality},{self.str},{self.agi},{self.vit},{self.int},{self.luk}\n"
 
 
 class LvupUtil:
@@ -97,11 +97,12 @@ class LvupUtil:
 
 if __name__ == '__main__':
     lvup_util = LvupUtil()
-    # 各性格ごとに勇者を100人作り一定のレベルまで上げる
-    for personality in lvup_util.personality_list():
-        for n in range(0, 100):
-            b = Brave(personality)
-            for i in range(0, 39):
-                b.lvup()
-            # 出来上がったら出力
-            print(b)
+    with open('output.csv', 'w') as f:
+        for personality in lvup_util.personality_list():
+            # 各性格ごとに勇者を100人作り一定のレベルまで上げる
+            for n in range(0, 100):
+                b = Brave(personality)
+                for i in range(0, 39):
+                    b.lvup()
+                # 出来上がったら出力
+                f.write(b.__str__())
