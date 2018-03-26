@@ -98,6 +98,7 @@ class LvupUtil:
 if __name__ == '__main__':
     lvup_util = LvupUtil()
     with open('output.csv', 'w') as f:
+        f.write("name,lv,personality,str,agi,vit,int,luk\n")
         for personality in lvup_util.personality_list():
             # 各性格ごとに勇者を100人作り一定のレベルまで上げる
             for n in range(0, 100):
